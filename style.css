@@ -295,3 +295,141 @@ section{
         opacity:0;
     }
 }
+
+/* =========================================
+   📱 TABLETS
+========================================= */
+@media (max-width: 992px){
+
+    nav{
+        padding:16px 25px;
+    }
+
+    .hero h1{
+        font-size:3.2rem;
+    }
+
+    .glass{
+        width:95%;
+        padding:25px;
+    }
+
+    .timeline-item{
+        flex-direction:column;
+        gap:10px;
+    }
+}
+
+
+/* =========================================
+   📱 MOBILE DEVICES
+========================================= */
+@media (max-width: 768px){
+
+    /* NAV */
+    nav{
+        padding:14px 18px;
+    }
+
+    .logo{
+        font-size:1.3rem;
+    }
+
+    .toggle{
+        padding:8px 12px;
+        font-size:0.9rem;
+    }
+
+    /* HERO */
+    .hero h1{
+        font-size:2.3rem;
+        line-height:1.3;
+    }
+
+    .hero p{
+        font-size:0.95rem;
+        line-height:1.7;
+    }
+
+    /* GLASS CARDS */
+    .glass{
+        width:100%;
+        padding:22px;
+        border-radius:18px;
+    }
+
+    /* SECTIONS */
+    section{
+        padding:100px 15px;
+    }
+
+    /* TIMELINE */
+    .timeline-item{
+        flex-direction:column;
+        gap:10px;
+        padding:12px;
+    }
+
+    .timeline-item h3{
+        font-size:1rem;
+    }
+
+    .timeline-item p{
+        font-size:0.9rem;
+    }
+
+    /* GALLERY */
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .media{
+        height:220px;
+    }
+
+    /* LETTERS */
+    .letter-card{
+        font-size:0.92rem;
+        padding:18px;
+    }
+
+    /* PROMISE */
+    .promise-box{
+        grid-template-columns:1fr;
+    }
+
+    .promise{
+        font-size:0.92rem;
+    }
+}
+
+
+/* =========================================
+   📱 SMALL PHONES
+========================================= */
+@media (max-width: 480px){
+
+    .hero h1{
+        font-size:1.9rem;
+    }
+
+    .hero p{
+        font-size:0.88rem;
+    }
+
+    nav{
+        padding:12px 14px;
+    }
+
+    .logo{
+        font-size:1.1rem;
+    }
+
+    .glass{
+        padding:18px;
+    }
+
+    .media{
+        height:190px;
+    }
+}
