@@ -21,14 +21,14 @@
 
 <!-- HERO -->
 <section>
-    <div class="glass hero">
+    <div class="hero">
         <h1>Oshadha & Chaya</h1>
         <p>A universe built from memories, distance, and silent feelings ✨</p>
     </div>
 </section>
 
 <!-- TIMELINE -->
-<section>
+<section class="reveal">
     <div class="glass">
         <h2>💫 Timeline</h2>
 
@@ -62,7 +62,7 @@
 </section>
 
 <!-- GALLERY -->
-<section>
+<section class="reveal">
     <div class="glass">
         <h2>📸 Memories Gallery</h2>
 
@@ -113,7 +113,7 @@
 </section>
 
 <!-- LETTERS -->
-<section>
+<section class="reveal">
     <div class="glass">
         <h2>💌 For You</h2>
 
@@ -129,7 +129,7 @@
 </section>
 
 <!-- PROMISE -->
-<section>
+<section class="reveal">
     <div class="glass">
         <h2>💖 Promise </h2>
 
@@ -192,6 +192,27 @@ function createSparkle(){
         s.remove();
     }, duration * 1000);
 }
+
+const reveals = document.querySelectorAll(".reveal");
+
+function revealSections(){
+
+    reveals.forEach(section => {
+
+        const windowHeight = window.innerHeight;
+        const revealTop = section.getBoundingClientRect().top;
+
+        if(revealTop < windowHeight - 100){
+            section.classList.add("active");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revealSections);
+
+revealSections();
 
 // continuous sparkles
 setInterval(createSparkle, 120);
