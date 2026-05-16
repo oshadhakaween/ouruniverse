@@ -1,3 +1,7 @@
+html{
+    scroll-behavior:smooth;
+}
+
 *{
     margin:0;
     padding:0;
@@ -124,6 +128,55 @@ nav{
     background:rgba(0,0,0,0.35);
 
     z-index:9999;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-family:'Pacifico',cursive;
+
+    animation:
+        floatTitle 5s ease-in-out infinite,
+        glowTitle 4s ease-in-out infinite alternate;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.4),
+        0 0 20px rgba(124,77,255,0.5),
+        0 0 40px rgba(255,77,166,0.3);
+}
+
+/* floating effect */
+@keyframes floatTitle{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* glowing effect */
+@keyframes glowTitle{
+    from{
+        text-shadow:
+        0 0 10px rgba(255,255,255,0.4),
+        0 0 20px rgba(124,77,255,0.5);
+    }
+
+    to{
+        text-shadow:
+        0 0 20px rgba(255,255,255,0.8),
+        0 0 40px rgba(255,77,166,0.8),
+        0 0 70px rgba(124,77,255,0.7);
+    }
 }
 
 .logo{
@@ -432,4 +485,20 @@ section{
     .media{
         height:190px;
     }
+}
+
+/* hidden state */
+.reveal{
+    opacity:0;
+    transform:translateY(80px) scale(0.96);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+/* visible state */
+.reveal.active{
+    opacity:1;
+    transform:translateY(0) scale(1);
 }
