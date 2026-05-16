@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oshadha ✦ Chaya Universe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="sparkles"></div>
+
+<nav>
+    <div class="logo">O ✦ C</div>
+    <button class="toggle" onclick="toggleTheme()">🌙 / ☀</button>
+</nav>
+
+<!-- HERO -->
+<section>
+    <div class="glass hero">
+        <h1>Oshadha & Chaya</h1>
+        <p>A universe built from memories, distance, and silent feelings ✨</p>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+    <div class="glass">
+        <h2>💫 Timeline</h2>
+
+        <div class="timeline-item">
+            <div>
+                <h3>First Meet</h3>
+                <p> - Do you remember that date? At a rush town you saw me as a driver, but fist i saw you inside keels right?</p>
+                <p> - And it was on 12th April 2025</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div>
+                <h3>How it started</h3>
+                <p> - You just text me from brothers mobile, who thought that would drag us this much?</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div>
+                <h3>Special Moments ✨</h3>
+                <p> - Carrying you down from the mountain.</p>
+                <p> - Purchasing a waterbottle for you.</p>
+                <p> - I said i love you first on 20th April. I know it just an ordinary confession, sorry for that.</p>
+                <p> - i dont know just let me know if you got more.</p>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+    <div class="glass">
+        <h2>📸 Memories Gallery</h2>
+
+        <div class="gallery">
+
+            <!-- IMAGE SLOT -->
+            <div class="media">
+                <img src="https://picsum.photos/400/300?random=1">
+            </div>
+
+            <div class="media">
+                <img src="https://picsum.photos/400/300?random=2">
+            </div>
+
+            <!-- VIDEO SLOT -->
+            <div class="media">
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+                </video>
+            </div>
+
+            <div class="media">
+                <img src="https://picsum.photos/400/300?random=3">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- LETTERS -->
+<section>
+    <div class="glass">
+        <h2>💌 For You</h2>
+
+        <div class="letter-card">
+            Im sorry for every words that came out of my mouth made you sad.
+        </div>
+
+        <div class="letter-card">
+            I just like to see you the Raw version of you, that smile joyfull energy and everything.
+        </div>
+
+    </div>
+</section>
+
+<!-- PROMISE -->
+<section>
+    <div class="glass">
+        <h2>💖 Promise </h2>
+
+        <div class="promise-box">
+
+            <div class="promise">I will remember you in every version of me.</div>
+
+            <div class="promise">Even silence won't change this bond.</div>
+
+            <div class="promise">Distance is just a temporary line.</div>
+
+            <div class="promise">Some connections don’t fade.</div>
+
+            <div class="promise">I will promise to look after you till the death.</div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+
+/* THEME TOGGLE */
+function toggleTheme(){
+    const body = document.body;
+
+    if(body.classList.contains("light")){
+        body.classList.remove("light");
+        body.classList.add("dark");
+    }else{
+        body.classList.remove("dark");
+        body.classList.add("light");
+    }
+}
+
+document.body.classList.add("dark");
+
+const container = document.getElementById("sparkles");
+
+function createSparkle(){
+    const s = document.createElement("div");
+    s.classList.add("sparkle");
+
+    // random position
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+
+    // random size
+    const size = Math.random() * 3 + 2;
+    s.style.width = size + "px";
+    s.style.height = size + "px";
+
+    // random duration
+    const duration = Math.random() * 3 + 2;
+    s.style.animationDuration = duration + "s";
+
+    container.appendChild(s);
+
+    setTimeout(() => {
+        s.remove();
+    }, duration * 1000);
+}
+
+// continuous sparkles
+setInterval(createSparkle, 120);
+
+</script>
+
+</body>
+</html>
