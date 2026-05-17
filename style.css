@@ -459,6 +459,19 @@ section{
     .promise{
         font-size:0.92rem;
     }
+
+    body::before{
+
+        background:
+        linear-gradient(
+            rgba(0,0,0,0.4),
+            rgba(0,0,0,0.4)
+        ),
+        url("bg2.png");
+
+        background-size:cover;
+        background-position:center;
+    }
 }
 
 
@@ -489,6 +502,19 @@ section{
 
     .media{
         height:190px;
+    }
+
+    body::before{
+
+        background:
+        linear-gradient(
+            rgba(0,0,0,0.4),
+            rgba(0,0,0,0.4)
+        ),
+        url("bg2.png");
+
+        background-size:cover;
+        background-position:center;
     }
 }
 
