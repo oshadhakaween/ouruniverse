@@ -182,6 +182,361 @@
     </div>
 </section>
 
+<!-- COMFORT CHARACTER -->
+
+<div class="comfort-character" id="comfortCharacter">
+
+    <div class="character-glow"></div>
+
+    <img
+        src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExajMyZ3FvMzJsY2dhdDZ3MmloMDE4OGxmczdnaW44MTU0aGpzeGJ6YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1RCeKqfffGBHLhtYOb/giphy.gif"
+        alt="comfort astronaut"
+        class="character-img"
+        id="characterImg"
+    >
+
+    <div class="speech-bubble" id="speechBubble">
+        You're safe here 🌙
+    </div>
+
+</div>
+
+<!-- HEART PARTICLES -->
+<div id="heartContainer"></div>
+
+<style>
+
+/* CHARACTER CONTAINER */
+.comfort-character{
+    position:fixed;
+    bottom:25px;
+    right:20px;
+
+    width:140px;
+    height:140px;
+
+    z-index:9999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    animation:floatCharacter 4s ease-in-out infinite;
+
+    transition:transform 0.3s ease;
+
+    user-select:none;
+    -webkit-user-select:none;
+
+    touch-action:manipulation;
+}
+
+/* CHARACTER IMAGE */
+.character-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+
+    filter:
+    drop-shadow(0 0 15px rgba(255,255,255,0.25))
+    drop-shadow(0 0 30px rgba(160,120,255,0.35));
+
+    transition:0.3s ease;
+}
+
+/* GLOW */
+.character-glow{
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,160,240,0.45),
+    rgba(120,170,255,0.15),
+    transparent 70%);
+
+    filter:blur(20px);
+
+    animation:pulseGlow 3s ease-in-out infinite;
+}
+
+/* FLOATING */
+@keyframes floatCharacter{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* GLOW ANIMATION */
+@keyframes pulseGlow{
+    0%{
+        transform:scale(1);
+        opacity:0.6;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity:1;
+    }
+    100%{
+        transform:scale(1);
+        opacity:0.6;
+    }
+}
+
+/* SPEECH BUBBLE */
+.speech-bubble{
+    position:absolute;
+
+    bottom:135px;
+    right:0;
+
+    max-width:230px;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    color:white;
+    font-size:0.92rem;
+    line-height:1.5;
+
+    opacity:0;
+    pointer-events:none;
+
+    transform:translateY(10px) scale(0.95);
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.2);
+}
+
+.speech-bubble.show{
+    opacity:1;
+    transform:translateY(0px) scale(1);
+}
+
+/* HEARTS */
+.heart-particle{
+    position:fixed;
+
+    font-size:18px;
+
+    pointer-events:none;
+
+    animation:heartFly 3s linear forwards;
+
+    z-index:99999;
+}
+
+@keyframes heartFly{
+
+    0%{
+        transform:translateY(0px) scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-180px) translateX(var(--moveX)) scale(1.8);
+        opacity:0;
+    }
+}
+
+/* CHARACTER HOVER */
+.comfort-character:hover .character-img{
+    transform:scale(1.08) rotate(-3deg);
+}
+
+/* TAP EFFECT */
+.comfort-character.tap{
+    transform:scale(0.92);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .comfort-character{
+        width:105px;
+        height:105px;
+
+        bottom:18px;
+        right:12px;
+    }
+
+    .speech-bubble{
+        max-width:180px;
+        font-size:0.8rem;
+
+        bottom:105px;
+    }
+}
+
+/* SMALL DEVICES */
+@media(max-width:480px){
+
+    .comfort-character{
+        width:90px;
+        height:90px;
+    }
+
+    .speech-bubble{
+        right:-5px;
+        max-width:160px;
+        padding:12px 14px;
+    }
+}
+
+</style>
+
+<script>
+
+const character = document.getElementById("comfortCharacter");
+const bubble = document.getElementById("speechBubble");
+
+const messages = [
+
+    "You're safe here 🌙",
+
+    "I'm proud of you 💖",
+
+    "Rest a little, okay? ✨",
+
+    "You deserve gentle love 🌸",
+
+    "Even stars need darkness to shine 🌌",
+
+    "You're doing better than you think 🫶",
+
+    "Take a deep breath for me 🌙",
+
+    "You matter so much 💫"
+
+];
+
+/* SHOW MESSAGE */
+function showComfortMessage(){
+
+    const randomMessage =
+    messages[Math.floor(Math.random()*messages.length)];
+
+    bubble.innerHTML = randomMessage;
+
+    bubble.classList.add("show");
+
+    setTimeout(()=>{
+        bubble.classList.remove("show");
+    },3500);
+}
+
+/* HEARTS */
+function createHearts(){
+
+    for(let i=0;i<10;i++){
+
+        const heart = document.createElement("div");
+
+        heart.classList.add("heart-particle");
+
+        heart.innerHTML = ["💖","✨","🌸","💫"][Math.floor(Math.random()*4)];
+
+        const rect = character.getBoundingClientRect();
+
+        heart.style.left = rect.left + rect.width/2 + "px";
+        heart.style.top = rect.top + "px";
+
+        heart.style.setProperty(
+            "--moveX",
+            (Math.random()*120 - 60) + "px"
+        );
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },3000);
+    }
+}
+
+/* CLICK / TAP */
+character.addEventListener("click",()=>{
+
+    character.classList.add("tap");
+
+    setTimeout(()=>{
+        character.classList.remove("tap");
+    },180);
+
+    showComfortMessage();
+
+    createHearts();
+
+});
+
+/* AUTO MESSAGES */
+setInterval(()=>{
+
+    showComfortMessage();
+
+},15000);
+
+/* FOLLOW CURSOR SLIGHTLY ON DESKTOP */
+document.addEventListener("mousemove",(e)=>{
+
+    if(window.innerWidth < 768) return;
+
+    const x = (window.innerWidth/2 - e.clientX) / 80;
+    const y = (window.innerHeight/2 - e.clientY) / 80;
+
+    character.style.transform = `translate(${x}px, ${y}px)`;
+
+});
+
+/* SLEEP MODE */
+let idleTimer;
+
+function resetIdle(){
+
+    clearTimeout(idleTimer);
+
+    character.style.opacity = "1";
+
+    idleTimer = setTimeout(()=>{
+
+        bubble.innerHTML = "Zzz... 🌙";
+        bubble.classList.add("show");
+
+        character.style.opacity = "0.8";
+
+    },25000);
+}
+
+["mousemove","click","touchstart","scroll"]
+.forEach(event=>{
+    document.addEventListener(event, resetIdle);
+});
+
+resetIdle();
+
+</script>
+
 <div class="footer">
   Made with love by Oshadha ❤️
 </div>
