@@ -638,3 +638,11 @@ section{
   padding:30px;
   color:var(--text);
 }
+
+.zbutton{
+    margin-top: 30px;
+    font-size: larger;
+    font-weight: bolder;
+    background-color: rgb(255, 0, 43);
+    color: var(--text);
+}
