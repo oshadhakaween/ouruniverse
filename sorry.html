@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ffd6e7,#ffe8d6);
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.container{
+text-align:center;
+padding:20px;
+max-width:700px;
+z-index:10;
+}
+
+h1{
+font-size:clamp(2rem,5vw,4rem);
+color:#ff4d88;
+margin-bottom:20px;
+animation:fadeDown 1s ease;
+}
+
+.typing{
+font-size:clamp(1rem,2vw,1.3rem);
+color:#555;
+min-height:80px;
+margin-bottom:30px;
+}
+
+.bear{
+width:min(280px,70vw);
+animation:float 4s ease-in-out infinite;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:#ff4d88;
+color:white;
+font-size:1rem;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 10px 25px rgba(255,77,136,.3);
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.hidden{
+opacity:0;
+transform:translateY(20px);
+transition:1s;
+margin-top:20px;
+color:#ff4d88;
+font-size:1.3rem;
+font-weight:600;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:25px;
+animation:rise linear infinite;
+opacity:.7;
+}
+
+@keyframes rise{
+to{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>I'm Sorry ❤️</h1>
+
+<img class="bear"
+src="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+
+<div class="typing" id="typing"></div>
+
+<button onclick="forgiveMe()">
+Will You Forgive Me? 🥺
+</button>
+
+<div class="hidden" id="reply">
+Thank you for giving me another chance ❤️
+</div>
+
+</div>
+
+<script>
+
+const messages = [
+"I know I made a mistake...",
+"I never wanted to hurt you.",
+"You mean so much to me.",
+"I'm truly sorry from the bottom of my heart.",
+"I hope one day you'll forgive me. ❤️"
+];
+
+const typing = document.getElementById("typing");
+
+let msgIndex = 0;
+let charIndex = 0;
+
+function typeText(){
+
+if(msgIndex >= messages.length) return;
+
+if(charIndex < messages[msgIndex].length){
+
+typing.innerHTML += messages[msgIndex].charAt(charIndex);
+charIndex++;
+
+setTimeout(typeText,50);
+
+}else{
+
+setTimeout(()=>{
+
+typing.innerHTML = "";
+msgIndex++;
+charIndex = 0;
+typeText();
+
+},1800);
+
+}
+}
+
+typeText();
+
+function forgiveMe(){
+document.getElementById("reply").classList.add("show");
+
+for(let i=0;i<30;i++){
+createHeart();
+}
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+heart.innerHTML=["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*4+4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+
+}
+
+setInterval(createHeart,600);
+
+</script>
+
+</body>
+</html>
