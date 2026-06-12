@@ -21,6 +21,7 @@ html{
     --ptext:#ffffffbb;
 
     --glow:#2600ff;
+    --glow2: gray;
 }
 
 /* ☀ LIGHT THEME */
@@ -36,6 +37,7 @@ body.light{
     --ptext:#000000bb;
 
     --glow:#ff4da6;
+    --glow2: gray;
 }
 
 /* 🌌 BODY + GALAXY BACKGROUND */
@@ -315,6 +317,19 @@ section{
 .promise:hover{
     transform:scale(1.05);
     box-shadow:0 0 25px var(--glow);
+}
+
+.ftales{
+    padding:20px;
+    font-size: large;
+    border-radius:15px;
+    background:rgba(255,255,255,0.08);
+    transition:0.3s;
+}
+
+.ftales:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px var(--glow2);
 }
 
 #sparkles{
@@ -615,7 +630,7 @@ section{
 }
 
 .wcard{
-    height:680px;
+    height:480px;
     border-radius:15px;
     margin-top: 20px;
 
@@ -628,9 +643,10 @@ section{
 }
 
 .wcard img{
-    width:100%;
-    height:100%;
+    width:70%;
+    height:70%;
     object-fit:cover;
+    border-radius: 15px;
 }
 
 .footer{
@@ -645,4 +661,19 @@ section{
     font-weight: bolder;
     background-color: rgb(255, 0, 43);
     color: var(--text);
+}
+
+.strbutton{
+    display: inline-block;
+    margin-top: 30px;
+    font-weight: bolder;
+    background-color: rgba(0, 253, 0, 0.651);
+    color: var(--text);
+    
+    box-shadow:0 0 10px rgba(255, 250, 250, 0.555);
+}
+
+.strbutton:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px var(--glow2);
 }
