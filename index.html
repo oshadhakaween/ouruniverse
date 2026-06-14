@@ -16,9 +16,32 @@
 
 <div id="sparkles"></div>
 
-<nav>
+<nav class="desktop-nav">
     <div class="logo">Our Universe that lasts forever.......</div>
+        <a href="#timeline" class="toggle">Timeline</a>
+        <a href="#mgallery" class="toggle">Memories</a>
+        <a href="#wcard" class="toggle">W Card</a>
+        <a href="#ftales" class="toggle">Fairy Tales</a>
+        <a href="#bwrap" class="toggle">Bubble</a>
+        <a href="#promise" class="toggle">Promise</a>
     <button class="toggle" onclick="toggleTheme()">🌙 / ☀</button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+        <a href="#timeline">Timeline</a>
+        <a href="#mgallery">Memories</a>
+        <a href="#wcard">W Card</a>
+        <a href="#ftales">Fairy Tales</a>
+        <a href="#bwrap">Bubble</a>
+        <a href="#promise">Promise</a>
+        <button class="toggle themetoggle" onclick="toggleTheme()">🌙 / ☀</button>
+</div>
+
+<nav class="pnav">
+    <div class="logo">Our Universe that lasts forever.......</div>
+    <button class="menu-btn toggle" id="menuBtn">
+        ☰
+    </button>
 </nav>
 
 <!-- HERO -->
@@ -31,7 +54,7 @@
 </section>
 
 <!-- TIMELINE -->
-<section class="reveal">
+<section id="timeline" class="reveal">
     <div class="glass">
         <h2>💫 Timeline</h2>
 
@@ -83,7 +106,7 @@
 </section>
 
 <!-- GALLERY -->
-<section class="reveal">
+<section id="mgallery" class="reveal">
     <div class="glass">
         <h2>📸 Memories Gallery</h2>
 
@@ -150,19 +173,33 @@
 </section> -->
 
 <!-- Wcard -->
-<section class="reveal">
+<section id="wcard" class="reveal">
     <div class="glass">
         <h2>💌 Invitation</h2>
 
-        <div class="wcard">
-            <img src="card.png">
+        <div class="gtypediv">
+            <div class="wcard">
+                <img src="card.png">
+            </div>
+            <div class="rside">
+                <div class="timeline-item">
+                    <div>
+                        <h3>Notes ✨</h3>
+                        <p> - I will make this dream come true darling.</p>
+                        <p> - Never doubt about that.</p>
+                        <p> - Just be my side always, thats all i want.</p>
+                        <p> - We have to make lots of memories together.</p>
+                        <p> - So please just wait for them.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
 </section>
 
 <!-- Stories -->
-<section class="reveal">
+<section id="ftales" class="reveal">
     <div class="glass">
         <h2>💖 Fairy Tales </h2>
         <h2>(තාම කතාවක් හදල නෑ සුදූ වෙලාවක් හම්බුන ගමන් හදල දාල කියන්නම්.)</h2>
@@ -190,8 +227,19 @@
     </div>
 </section>
 
+<section id="bwrap" class="reveal">
+    <div class="glass">
+        <div class="feature-card">
+            <h2>Anxiety Relief Bubble Wrap</h2>
+            <p class="card-description">If your mind is drifting or you feel stressed about the future, take a deep breath and pop some bubbles.</p>
+            <div class="bubble-wrap-matrix" id="bubble-matrix"></div>
+            <button class="action-btn toggle" onclick="resetBubbleWrap()"><span>Reset Wrap</span></button>
+        </div>
+    </div>
+</section>
+
 <!-- PROMISE -->
-<section class="reveal">
+<section id="promise" class="reveal">
     <div class="glass">
         <h2>💖 Promise </h2>
 
@@ -219,7 +267,7 @@
     <div class="character-glow"></div>
 
     <img
-        src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExajMyZ3FvMzJsY2dhdDZ3MmloMDE4OGxmczdnaW44MTU0aGpzeGJ6YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1RCeKqfffGBHLhtYOb/giphy.gif"
+        src="robot.png"
         alt="comfort astronaut"
         class="character-img"
         id="characterImg"
@@ -438,6 +486,20 @@
 
 <script>
 
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("active");
+});
+
+// Close menu after clicking a link
+document.querySelectorAll(".mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+    });
+});
+
 const character = document.getElementById("comfortCharacter");
 const bubble = document.getElementById("speechBubble");
 
@@ -630,6 +692,43 @@ function revealSections(){
     });
 
 }
+
+// --- INTERACTIVE ENGINE: BUBBLE MATRIX ---
+        function buildBubbleMatrix() {
+            const container = document.getElementById("bubble-matrix");
+            container.innerHTML = "";
+            for (let i = 0; i < 24; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble-node');
+                bubble.onclick = function() {
+                    bubble.classList.add('popped');
+                    if (window.AudioContext || window.webkitAudioContext) { playPopSound(); }
+                };
+                container.appendChild(bubble);
+            }
+        }
+
+        function resetBubbleWrap() { buildBubbleMatrix(); }
+
+        function playPopSound() {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                const ctx = new AudioCtx();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(550, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1100, ctx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.06);
+            } catch (e) {}
+        }
+
+        window.onload = function() { buildBubbleMatrix(); };
 
 window.addEventListener("scroll", revealSections);
 
