@@ -16,7 +16,7 @@ html{
     --bg4:#000000;
     --bg5:#000000;
 
-    --card:rgba(0, 0, 0, 0.336);
+    --card:rgba(0, 0, 0, 0.733);
     --text:#ffffff;
     --ptext:#ffffffbb;
 
@@ -32,7 +32,7 @@ body.light{
     --bg4:#fff7d6;
     --bg5:#e8fff1;
 
-    --card:rgba(0,0,0,0.08);
+    --card:rgba(0, 0, 0, 0.37);
     --text:#111;
     --ptext:#000000bb;
 
@@ -175,7 +175,7 @@ nav{
 
 .logo{
     font-family:'Pacifico',cursive;
-    font-size:1.7rem;
+    font-size:1.2rem;
 }
 
 /* 🌗 BUTTON */
@@ -217,7 +217,7 @@ section{
     background:var(--card);
     backdrop-filter:blur(25px);
 
-    border:1px solid rgba(255, 255, 255, 0.39);
+    border:0px solid rgba(255, 255, 255, 0.39);
     border-radius:20px;
 
     padding:30px;
@@ -542,8 +542,8 @@ section{
         scale(0.97);
 
     transition:
-        opacity 1s ease,
-        transform 1s ease;
+        opacity 2s ease,
+        transform 2s ease;
 }
 
 .reveal.active{
@@ -643,8 +643,8 @@ section{
 }
 
 .wcard img{
-    width:70%;
-    height:70%;
+    width:95%;
+    height:95%;
     object-fit:cover;
     border-radius: 15px;
 }
@@ -676,4 +676,140 @@ section{
 .strbutton:hover{
     transform:scale(1.05);
     box-shadow:0 0 20px var(--glow2);
+}
+
+
+/* Digital Bubble Pop Area */
+        .bubble-wrap-matrix {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 360px;
+        }
+
+        .bubble-node {
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle at 30% 30%, #fff, #ffb3c1);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: inset -3px -3px 7px rgba(0,0,0,0.15), 3px 5px 10px rgba(255,117,143,0.3);
+            transition: transform 0.1s ease;
+        }
+
+        .bubble-node.popped {
+            background: rgba(112, 111, 111, 0.562);
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+.gtypediv {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .gtypediv {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Desktop Navbar */
+.desktop-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.desktop-nav a,
+.mobile-menu a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 400;
+    border: 2px solid;
+    border-color: var(--text);
+    border-radius: 25px;
+    margin: 0px 20px 0px 20px;
+}
+
+.desktop-nav a{
+    font-size: 0.8rem;
+    border: none;
+}
+
+/* Floating Button */
+.menu-btn {
+    display: none;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+    padding: 0;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.2);
+}
+
+/* Slide Menu */
+.mobile-menu {
+    position: fixed;
+    right: -250px;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+
+    background: var(--bg1);
+    box-shadow: -5px 0 20px rgba(0,0,0,.15);
+
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    gap: 20px;
+
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu a {
+    padding: 12px 25px;
+}
+
+.pnav{
+    display: none;
+}
+
+.themetoggle{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .pnav{
+        display: block;
+    }
 }
